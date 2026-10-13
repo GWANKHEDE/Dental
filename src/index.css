@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+
+  --color-mint-50: #f1fbf6;
+  --color-mint-100: #e2f8ee;
+  --color-mint-200: #c6f1de;
+  --color-mint-300: #97e3c4;
+  --color-mint-400: #5fd0a4;
+  --color-mint-500: #33b986;
+
+  --color-ink-900: #0e2a24;
+  --color-ink-600: #3f5a52;
+  --color-ink-400: #6d857c;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply font-sans text-ink-900 antialiased;
+    background: linear-gradient(
+      180deg,
+      #f3fdf8 0%,
+      #ffffff 30%,
+      #edfaf3 66%,
+      #ffffff 100%
+    );
+    background-attachment: fixed;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-mint-200 text-ink-900;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal-600);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-mint-50);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-mint-200);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-mint-300);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 px-7 py-3.5 text-sm font-bold text-white shadow-[0_10px_30px_-8px_rgba(13,148,136,0.45)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:from-teal-600 hover:to-teal-700 hover:shadow-[0_16px_40px_-8px_rgba(13,148,136,0.5)] active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-teal-600/20 bg-white/60 px-7 py-3.5 text-sm font-bold text-teal-700 shadow-[0_4px_20px_-6px_rgba(13,148,136,0.15)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-600/35 hover:bg-white/80 active:translate-y-0;
+  }
+
+  .card {
+    @apply rounded-[1.75rem] border border-white/70 bg-white/60 shadow-[0_12px_40px_-14px_rgba(13,148,136,0.14)] backdrop-blur-xl;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-teal-900/10 bg-white/80 px-4 py-3 text-sm font-medium text-ink-900 shadow-[inset_0_1px_3px_rgba(13,148,136,0.06)] backdrop-blur transition-colors placeholder:text-ink-400/70 focus:border-teal-500 focus:outline-none;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-bold uppercase tracking-wider text-ink-600;
+  }
+
+  .icon-badge {
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-mint-100 to-teal-100/70 text-teal-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition-colors duration-300 group-hover:from-teal-500 group-hover:to-teal-600 group-hover:text-white;
+  }
+}
+
+@layer utilities {
+  .container-pad {
+    @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 28s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
