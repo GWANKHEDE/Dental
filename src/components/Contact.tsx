@@ -16,22 +16,22 @@ export function Contact() {
     <section
       id="contact"
       aria-label="Contact and location"
-      className="scroll-mt-24 bg-mint-50/40 py-20 sm:py-24 lg:py-28"
+      className="scroll-mt-28 bg-mint-50/40 py-24 sm:py-28 lg:py-32"
     >
       <div className="container-pad">
         <SectionHeading
           eyebrow="Contact & location"
           title={
             <>
-              Visit us in <em className="italic text-teal-700">Nanded</em>
+              Visit us in <em className="italic text-teal-600">Nanded</em>
             </>
           }
           description="Raj Mohammed Complex, Vivek Nagar Road — easy to reach from anywhere in the city. Call, WhatsApp, or drop by."
         />
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
           <Reveal>
-            <article className="card flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-mint-300/80">
+            <article className="card group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glass-lg">
               <span className="icon-badge">
                 <MapPin className="h-6 w-6" strokeWidth={1.8} />
               </span>
@@ -54,7 +54,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.07}>
-            <article className="card flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-mint-300/80">
+            <article className="card group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glass-lg">
               <span className="icon-badge">
                 <Phone className="h-6 w-6" strokeWidth={1.8} />
               </span>
@@ -71,7 +71,7 @@ export function Contact() {
                 Reach us by phone or WhatsApp for appointments and queries.
               </p>
               <div className="mt-4 flex gap-3">
-                <a href={CLINIC.phoneHref} className="btn-primary !px-4 !py-2 text-xs">
+                <a href={CLINIC.phoneHref} className="btn-primary-sm">
                   <Phone className="h-4 w-4" strokeWidth={1.8} />
                   Call now
                 </a>
@@ -79,7 +79,7 @@ export function Contact() {
                   href={CLINIC.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline !px-4 !py-2 text-xs"
+                  className="btn-outline-sm"
                 >
                   <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                   WhatsApp
@@ -89,7 +89,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <article className="card flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-mint-300/80">
+            <article className="card group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glass-lg">
               <span className="icon-badge">
                 <Star className="h-6 w-6" strokeWidth={1.8} />
               </span>
@@ -119,15 +119,17 @@ export function Contact() {
         </div>
 
         <Reveal delay={0.1}>
-          <div className="mt-5 overflow-hidden rounded-[2rem] border border-white/70 shadow-[0_12px_40px_-14px_rgba(13,148,136,0.14)]">
-            <iframe
-              title="Map showing Global Dental Hospital on Vivek Nagar Road, Nanded"
-              src={CLINIC.mapsEmbed}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="h-64 w-full border-0 sm:h-80"
-              allowFullScreen
-            />
+          <div className="glass mt-6 overflow-hidden rounded-[2rem] p-2">
+            <div className="overflow-hidden rounded-[1.6rem]">
+              <iframe
+                title="Map showing Global Dental Hospital on Vivek Nagar Road, Nanded"
+                src={CLINIC.mapsEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-64 w-full border-0 sm:h-80"
+                allowFullScreen
+              />
+            </div>
           </div>
         </Reveal>
       </div>

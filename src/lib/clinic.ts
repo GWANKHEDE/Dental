@@ -30,16 +30,22 @@ export interface WebImage {
   credit: string
 }
 
-export const TOOTH_IMAGE: WebImage = {
-  src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Basic_anatomy_tooth.jpg/1280px-Basic_anatomy_tooth.jpg',
-  alt: 'Anatomical illustration of a human molar showing crown and roots',
-  credit: 'Basic anatomy tooth by Time3000 & Ian Furst, CC BY-SA 3.0',
+export const HERO_IMAGE: WebImage = {
+  src: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
+  alt: 'Dentist gently examining a patient’s teeth in a modern dental clinic',
+  credit: 'Photo via Unsplash',
 }
 
-export const TEETH_TYPES_IMAGE: WebImage = {
-  src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/3D_Medical_Animation_Still_Showing_Types_of_Teeth.jpg/1280px-3D_Medical_Animation_Still_Showing_Types_of_Teeth.jpg',
-  alt: '3D illustration showing the types of human teeth — incisors, canines, premolars and molars',
-  credit: '3D Medical Animation Still Showing Types of Teeth by Scientific Animations, CC BY-SA 4.0',
+export const CLINIC_IMAGE: WebImage = {
+  src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80',
+  alt: 'Dental professional performing a routine check-up in a bright clinic',
+  credit: 'Photo via Unsplash',
+}
+
+export const BANNER_IMAGE: WebImage = {
+  src: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=80',
+  alt: 'Modern dental clinic interior with a comfortable treatment chair',
+  credit: 'Photo via Unsplash',
 }
 
 export interface Treatment {

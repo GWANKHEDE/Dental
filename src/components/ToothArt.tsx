@@ -17,13 +17,13 @@ export function ToothArt({ className }: ToothArtProps) {
     >
       <defs>
         <linearGradient id={`${id}-body`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="52%" stopColor="#eefdf5" />
-          <stop offset="100%" stopColor="#c2ead8" />
+          <stop offset="0%" stopColor="#5eead4" />
+          <stop offset="55%" stopColor="#14b8a6" />
+          <stop offset="100%" stopColor="#0f766e" />
         </linearGradient>
         <linearGradient id={`${id}-shade`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0f766e" stopOpacity="0" />
-          <stop offset="100%" stopColor="#0f766e" stopOpacity="0.14" />
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.55" />
+          <stop offset="45%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path
@@ -40,7 +40,7 @@ export function ToothArt({ className }: ToothArtProps) {
         stroke="#ffffff"
         strokeWidth="4"
         strokeLinecap="round"
-        opacity="0.85"
+        opacity="0.9"
       />
       <path
         d="M126 44c4 2 6.5 6 6.8 10.8.3 5-.6 9.6-2.4 13.4"
@@ -48,7 +48,7 @@ export function ToothArt({ className }: ToothArtProps) {
         stroke="#ffffff"
         strokeWidth="4"
         strokeLinecap="round"
-        opacity="0.5"
+        opacity="0.45"
       />
     </svg>
   )

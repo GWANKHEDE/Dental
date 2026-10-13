@@ -119,28 +119,28 @@ export function Appointment() {
     <section
       id="appointment"
       aria-label="Book an appointment"
-      className="scroll-mt-24 py-20 sm:py-24 lg:py-28"
+      className="scroll-mt-28 py-24 sm:py-28 lg:py-32"
     >
       <div className="container-pad">
-        <div className="grid gap-10 lg:grid-cols-5">
+        <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <SectionHeading
               align="left"
               eyebrow="Appointment"
               title={
                 <>
-                  Book your <em className="italic text-teal-700">visit</em>
+                  Book your <em className="italic text-teal-600">visit</em>
                 </>
               }
               description="Send a request and we will confirm your slot by WhatsApp or phone. For urgent concerns, please call us directly."
             />
 
             <Reveal delay={0.1}>
-              <ul className="mt-7 space-y-3.5">
+              <ul className="mt-8 space-y-3.5">
                 <li>
                   <a
                     href={CLINIC.phoneHref}
-                    className="card group flex items-center gap-4 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-mint-300/80"
+                    className="card group flex items-center gap-4 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-glass-lg"
                   >
                     <span className="icon-badge">
                       <Phone className="h-5 w-5" strokeWidth={1.8} />
@@ -161,7 +161,7 @@ export function Appointment() {
                     href={CLINIC.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="card group flex items-center gap-4 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-mint-300/80"
+                    className="card group flex items-center gap-4 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-glass-lg"
                   >
                     <span className="icon-badge">
                       <MessageCircle className="h-5 w-5" strokeWidth={1.8} />
@@ -222,7 +222,7 @@ export function Appointment() {
                       transition={{ duration: 0.4 }}
                     >
                       <div className="flex flex-col items-start gap-4">
-                        <span className="icon-badge !h-12 !w-12 !rounded-2xl !bg-teal-600 !text-white">
+                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 text-white shadow-glow">
                           <Check className="h-6 w-6" strokeWidth={2} />
                         </span>
                         <div>
@@ -230,9 +230,9 @@ export function Appointment() {
                             Request sent, {booking.name.trim().split(' ')[0]}
                           </h4>
                           <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
-                            WhatsApp opened with your details so you can send them
-                            to us. We will confirm your slot shortly. If WhatsApp
-                            did not open, please call {CLINIC.phone}.
+                            WhatsApp opened with your details so you can send
+                            them to us. We will confirm your slot shortly. If
+                            WhatsApp did not open, please call {CLINIC.phone}.
                           </p>
                         </div>
                         <dl className="w-full divide-y divide-mint-100 rounded-2xl border border-mint-100 bg-mint-50/50 px-4 py-1 text-sm">
@@ -244,16 +244,18 @@ export function Appointment() {
                           ].map(([label, value]) => (
                             <div key={label} className="flex justify-between gap-4 py-2.5">
                               <dt className="font-bold text-ink-400">{label}</dt>
-                              <dd className="text-right font-extrabold text-ink-900">{value}</dd>
+                              <dd className="text-right font-extrabold text-ink-900">
+                                {value}
+                              </dd>
                             </div>
                           ))}
                         </dl>
                         <div className="flex flex-wrap gap-3">
-                          <a href={CLINIC.phoneHref} className="btn-primary !px-5 !py-2.5">
+                          <a href={CLINIC.phoneHref} className="btn-primary-sm">
                             <Phone className="h-4.5 w-4.5" strokeWidth={1.8} />
                             Call to confirm
                           </a>
-                          <button type="button" onClick={reset} className="btn-outline !px-5 !py-2.5">
+                          <button type="button" onClick={reset} className="btn-outline-sm">
                             Book another appointment
                           </button>
                         </div>
@@ -321,7 +323,10 @@ export function Appointment() {
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div>
                           <label htmlFor="appt-email" className="label">
-                            Email <span className="font-semibold normal-case tracking-normal text-ink-400">(optional)</span>
+                            Email{' '}
+                            <span className="font-semibold normal-case tracking-normal text-ink-400">
+                              (optional)
+                            </span>
                           </label>
                           <input
                             id="appt-email"
@@ -409,7 +414,10 @@ export function Appointment() {
 
                       <div>
                         <label htmlFor="appt-notes" className="label">
-                          Notes <span className="font-semibold normal-case tracking-normal text-ink-400">(optional)</span>
+                          Notes{' '}
+                          <span className="font-semibold normal-case tracking-normal text-ink-400">
+                            (optional)
+                          </span>
                         </label>
                         <textarea
                           id="appt-notes"
@@ -426,8 +434,9 @@ export function Appointment() {
                         Send appointment request
                       </button>
                       <p className="text-xs font-semibold leading-relaxed text-ink-400">
-                        By submitting, your details are sent to the clinic via WhatsApp to
-                        confirm your appointment. We do not store them on this website.
+                        By submitting, your details are sent to the clinic via
+                        WhatsApp to confirm your appointment. We do not store
+                        them on this website.
                       </p>
                     </motion.form>
                   )}

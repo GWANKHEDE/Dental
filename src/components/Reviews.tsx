@@ -103,53 +103,71 @@ export function Reviews() {
     <section
       id="reviews"
       aria-label="Patient reviews"
-      className="scroll-mt-24 bg-mint-50/40 py-20 sm:py-24 lg:py-28"
+      className="scroll-mt-28 bg-mint-50/40 py-24 sm:py-28 lg:py-32"
     >
       <div className="container-pad">
         <SectionHeading
           eyebrow="Patient reviews"
           title={
             <>
-              Trusted by our <em className="italic text-teal-700">patients</em>
+              Trusted by our <em className="italic text-teal-600">patients</em>
             </>
           }
         />
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-5">
+        <div className="mt-12 grid gap-5 lg:grid-cols-5">
           <Reveal className="lg:col-span-2">
-            <div className="card flex h-full flex-col justify-center !border-0 bg-gradient-to-br from-teal-500 to-teal-600 p-7 text-white shadow-xl shadow-teal-500/25 sm:p-9">
-              <div className="flex items-end gap-4">
-                <span className="font-display text-7xl font-semibold leading-none">
-                  {CLINIC.rating}
-                </span>
-                <div className="pb-1.5">
-                  <Stars rating={CLINIC.rating} className="h-6 w-6" tone="white" />
-                  <p className="mt-1.5 text-sm font-bold text-teal-50">out of 5 on Google</p>
+            <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-[2rem] border border-white/20 bg-gradient-to-br from-teal-500 via-teal-600 to-teal-700 p-7 text-white shadow-[0_28px_64px_-24px_rgb(13_148_136/0.5)] sm:p-9">
+              <div
+                aria-hidden="true"
+                className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-white/10"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]"
+              />
+
+              <div className="relative">
+                <div className="flex items-end gap-4">
+                  <span className="font-display text-7xl font-semibold leading-none">
+                    {CLINIC.rating}
+                  </span>
+                  <div className="pb-1.5">
+                    <Stars rating={CLINIC.rating} className="h-6 w-6" tone="white" />
+                    <p className="mt-1.5 text-sm font-bold text-teal-50">
+                      out of 5 on Google
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <p className="mt-5 text-sm leading-relaxed text-teal-50">
-                Patients rate Global Dental Hospital {CLINIC.rating} out of 5 stars on
-                Google. Read their reviews, or share your own experience after your visit.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3.5">
-                <a
-                  href={CLINIC.googleReviews}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-teal-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <Star className="h-4.5 w-4.5" strokeWidth={1.8} />
-                  Read Google reviews
-                </a>
-                <a
-                  href={CLINIC.googleReviews}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
-                >
-                  <MessageCircle className="h-4.5 w-4.5" strokeWidth={1.8} />
-                  Share your experience
-                </a>
+                <p className="mt-5 text-sm leading-relaxed text-teal-50">
+                  Patients rate Global Dental Hospital {CLINIC.rating} out of 5
+                  stars on Google. Read their reviews, or share your own
+                  experience after your visit.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-3.5">
+                  <a
+                    href={CLINIC.googleReviews}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-teal-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                  >
+                    <Star className="h-4.5 w-4.5" strokeWidth={1.8} />
+                    Read Google reviews
+                  </a>
+                  <a
+                    href={CLINIC.googleReviews}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-bold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
+                  >
+                    <MessageCircle className="h-4.5 w-4.5" strokeWidth={1.8} />
+                    Share your experience
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -253,7 +271,9 @@ export function Reviews() {
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div>
-                            <p className="text-sm font-extrabold text-ink-900">{entry.name}</p>
+                            <p className="text-sm font-extrabold text-ink-900">
+                              {entry.name}
+                            </p>
                             <div className="mt-0.5">
                               <Stars rating={entry.rating} className="h-3.5 w-3.5" />
                             </div>

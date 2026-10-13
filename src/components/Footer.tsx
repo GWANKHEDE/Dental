@@ -15,11 +15,15 @@ const CURRENT_YEAR = new Date().getFullYear()
 
 export function Footer() {
   return (
-    <footer className="border-t border-mint-100/80 bg-white/60 backdrop-blur-xl">
-      <div className="container-pad py-14">
+    <footer className="border-t border-mint-100/80 bg-white/55 backdrop-blur-xl">
+      <div className="container-pad py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <a href="#top" className="flex items-center gap-2.5" aria-label="Global Dental Hospital — back to top">
+            <a
+              href="#top"
+              className="flex items-center gap-2.5"
+              aria-label="Global Dental Hospital — back to top"
+            >
               <ToothArt className="h-9 w-9" />
               <span className="font-display text-lg font-semibold tracking-tight text-ink-900">
                 Global Dental <span className="text-teal-600">Hospital</span>
@@ -105,11 +109,11 @@ export function Footer() {
               Appointments take less than a minute to request.
             </p>
             <div className="mt-4 space-y-3">
-              <a href="#appointment" className="btn-primary w-full !py-3 text-xs">
+              <a href="#appointment" className="btn-primary-sm w-full">
                 <Calendar className="h-4 w-4" strokeWidth={1.8} />
                 Book Appointment
               </a>
-              <a href={CLINIC.phoneHref} className="btn-outline w-full !py-3 text-xs">
+              <a href={CLINIC.phoneHref} className="btn-outline-sm w-full">
                 <Phone className="h-4 w-4" strokeWidth={1.8} />
                 Call {CLINIC.phone}
               </a>
@@ -122,13 +126,10 @@ export function Footer() {
             © {CURRENT_YEAR} Global Dental Hospital. All rights reserved.
           </p>
           <p className="text-xs font-semibold text-ink-400">
-            Nanded, Maharashtra 431605 · For urgent concerns, call {CLINIC.phone}
+            Nanded, Maharashtra 431605 · Imagery via Unsplash · For urgent
+            concerns, call {CLINIC.phone}
           </p>
         </div>
-        <p className="mt-4 text-center text-[11px] leading-relaxed text-ink-400/80">
-          Dental illustrations by Time3000 & Ian Furst (CC BY-SA 3.0) and Scientific
-          Animations (CC BY-SA 4.0), via Wikimedia Commons.
-        </p>
       </div>
     </footer>
   )

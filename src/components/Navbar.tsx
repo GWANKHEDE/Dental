@@ -25,7 +25,9 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    if (!open) return undefined
+    if (!open) {
+      return undefined
+    }
     const original = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
@@ -33,95 +35,117 @@ export function Navbar() {
     }
   }, [open])
 
-  return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${
-        scrolled
-          ? 'border-white/60 bg-white/70 shadow-[0_8px_30px_-12px_rgba(13,148,136,0.18)] backdrop-blur-2xl'
-          : 'border-transparent bg-white/40 backdrop-blur-xl'
+  const pill = (
+    <div
+      className={`flex items-center justify-between gap-3 rounded-full px-4 py-2.5 transition-all duration-500 sm:px-5 ${
+        scrolled ? 'glass-strong' : 'border border-transparent'
       }`}
     >
-      <div className="container-pad">
-        <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
-          <a href="#top" className="flex items-center gap-2.5" aria-label="Global Dental Hospital — home">
-            <ToothArt className="h-9 w-9 drop-shadow-sm" />
-            <span className="font-display text-lg font-semibold tracking-tight text-ink-900">
-              Global Dental <span className="text-teal-600">Hospital</span>
-            </span>
-          </a>
+      <a
+        href="#top"
+        className="flex items-center gap-2.5"
+        aria-label="Global Dental Hospital — home"
+      >
+        <ToothArt className="h-9 w-9 drop-shadow-sm" />
+        <span className="font-display text-lg font-semibold tracking-tight text-ink-900">
+          Global Dental <span className="text-teal-600">Hospital</span>
+        </span>
+      </a>
 
-          <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="rounded-full px-4 py-2 text-sm font-bold text-ink-600 transition-colors hover:bg-white/70 hover:text-teal-700"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+      <nav aria-label="Primary" className="hidden lg:block">
+        <ul className="flex items-center gap-1">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="rounded-full px-4 py-2 text-sm font-bold text-ink-600 transition-colors duration-300 hover:bg-white/70 hover:text-teal-700"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-          <div className="flex items-center gap-3">
-            <a
-              href={CLINIC.phoneHref}
-              className="hidden items-center gap-2 text-sm font-extrabold text-ink-900 transition-colors hover:text-teal-700 xl:inline-flex"
-            >
-              <Phone className="h-4.5 w-4.5 text-teal-600" strokeWidth={1.8} />
-              {CLINIC.phone}
-            </a>
-            <a href="#appointment" className="btn-primary hidden !px-6 !py-2.5 sm:inline-flex">
-              <Calendar className="h-4.5 w-4.5" strokeWidth={1.8} />
-              Book Appointment
-            </a>
-            <button
-              type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-white/60 text-ink-900 backdrop-blur-xl transition-colors hover:bg-white/80 lg:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? 'Close menu' : 'Open menu'}
-              onClick={() => setOpen((value) => !value)}
-            >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
-        </div>
+      <div className="flex items-center gap-2.5">
+        <a
+          href={CLINIC.phoneHref}
+          className="hidden items-center gap-2 text-sm font-extrabold text-ink-900 transition-colors hover:text-teal-700 xl:inline-flex"
+        >
+          <Phone className="h-4.5 w-4.5 text-teal-600" strokeWidth={1.8} />
+          {CLINIC.phone}
+        </a>
+        <a href="#appointment" className="btn-primary-sm hidden sm:inline-flex">
+          <Calendar className="h-4.5 w-4.5" strokeWidth={1.8} />
+          Book Appointment
+        </a>
+        <button
+          type="button"
+          className="glass-strong inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-900 lg:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+    </div>
+  )
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className={`container-pad transition-[padding] duration-500 ${
+          scrolled ? 'pt-2.5' : 'pt-4'
+        }`}
+      >
+        {reduced ? (
+          pill
+        ) : (
+          <motion.div
+            initial={{ y: -28, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {pill}
+          </motion.div>
+        )}
       </div>
 
-      <AnimatePresence initial={false}>
-        {open &&
-          (reduced ? (
-            <nav
-              id="mobile-menu"
-              aria-label="Mobile"
-              className="border-b border-white/60 bg-white/80 backdrop-blur-2xl lg:hidden"
-            >
-              <MobileMenuLinks onNavigate={() => setOpen(false)} />
-            </nav>
-          ) : (
-            <motion.nav
-              id="mobile-menu"
-              aria-label="Mobile"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="overflow-hidden border-b border-white/60 bg-white/80 backdrop-blur-2xl lg:hidden"
-            >
-              <MobileMenuLinks onNavigate={() => setOpen(false)} />
-            </motion.nav>
-          ))}
-      </AnimatePresence>
+      <div className="container-pad lg:hidden">
+        <AnimatePresence initial={false}>
+          {open &&
+            (reduced ? (
+              <nav id="mobile-menu" aria-label="Mobile" className="mt-2">
+                <div className="glass-strong rounded-3xl">
+                  <MobileMenuLinks onNavigate={() => setOpen(false)} />
+                </div>
+              </nav>
+            ) : (
+              <motion.nav
+                id="mobile-menu"
+                aria-label="Mobile"
+                className="mt-2 overflow-hidden"
+                initial={{ opacity: 0, height: 0, y: -8 }}
+                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -8 }}
+                transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="glass-strong rounded-3xl">
+                  <MobileMenuLinks onNavigate={() => setOpen(false)} />
+                </div>
+              </motion.nav>
+            ))}
+        </AnimatePresence>
+      </div>
     </header>
   )
 }
 
 function MobileMenuLinks({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <ul className="space-y-1 px-6 pb-6 pt-3">
+    <ul className="space-y-1 px-4 pb-5 pt-3 sm:px-5">
       {NAV_LINKS.map((link) => (
         <li key={link.href}>
           <a
